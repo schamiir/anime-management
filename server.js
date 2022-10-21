@@ -27,7 +27,7 @@ client.connect().then(client => {
 
     // for the egine - > ejs 
     app.set('view engine', 'ejs') //starts the view engine which is ejs
-    app.use(express.static('public')) // makes the public folder accessible for the public -> allows to use static files for the ejs ( style.css, regular js, html )
+    app.use(express.static('public')) // makes the public folder accessible for the public -> allows to use static files for the ejs ( style.css, regular js, html ) express.static finds where
     app.use(bodyParser.urlencoded({ extended: true }))
 
     app.put('/animeData', (req, res) => {
