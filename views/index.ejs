@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello Eno</h1>
+    <!-- we need 
+    Add Animes we are watching to our LIST 
+
+    Track Episodes and Seasons - for loop 
+
+    Delete when completed with either episode or season 
+    -->
+    <!-- Search with Artwork and Episode -->
+
+        <form action="/animeData" method="POST">
+            <input type="text" name="animeTitle" id="userInput" placeholder="Find Your Anime" require>
+            <button id="searchAnime" type="submit">Search</button>
+        </form>
+
+            <ul class="animeData">
+                <% for(let i=0; i < anime.length; i++) { %>
+                    <li class="animeData">
+            
+                        <span>
+                            <%= anime[i].animeTitle %>
+                        </span>
+            
+                    </li>
+                    <% } %>
+            </ul>
+
+    <button id="addAnime">Add Anime</button>
+
+    <div class="random-animes" id="randomAnime">
+        <ul id="randomList"></ul>
+    </div>
+
+
+    <img src="" alt="" id="searchedAnime">
+
+    <div class="select
+    
+    
+    imged-anime-list">
+        <!-- pupulated with lis using the add anime button -->
+    </div>
+    
+
+    
+    <!-- only appear when there is a specifically selected anime -->
+
+    <ul id="episodes">Episodes</ul>
+
+
+    <ul>
+        <!-- populate it with lis that buttons -->
+    </ul>
+
+    <!-- delete anime from the list-->
+
+    <button>DELETE</button>
+    <script src="main.js"></script>
+</body>
+</html>
