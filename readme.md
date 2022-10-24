@@ -1,6 +1,6 @@
 # Anime App
 
-A anime management app using CRUD functionality
+A anime management app using CRUD functionality.
 
 
 ## Authors
