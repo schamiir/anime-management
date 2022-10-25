@@ -17,22 +17,25 @@
     -->
     <!-- Search with Artwork and Episode -->
 
-        <form action="/animeData" method="POST">
-            <input type="text" name="animeTitle" id="userInput" placeholder="Find Your Anime" require>
-            <button id="searchAnime" type="submit">Search</button>
-        </form>
+    <form action="/animeData" method="POST">
+        <input type="text" name="animeTitle" id="userInput" placeholder="Find Your Anime" require>
+        <button id="searchAnime" type="submit">Search</button>
+    </form>
 
-            <ul class="animeData">
-                <% for(let i=0; i < anime.length; i++) { %>
-                    <li class="animeData">
-            
-                        <span>
-                            <%= anime[i].animeTitle %>
-                        </span>
-            
-                    </li>
-                    <% } %>
-            </ul>
+    <ul class="animeData">  
+        <% for(let i=0; i < anime.length; i++) { %>
+            <li class="animeData">
+                <span><%= anime[i].title %></span>
+                <img src="<%= anime[i].img %>">
+
+                <form action="/animeData" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="id" value="<%= anime[i]['_id'] %>">
+                    <button id="delete">Remove Anime</button>
+                </form>
+            </li>
+        <% } %>
+    </ul>
 
     <button id="addAnime">Add Anime</button>
 
