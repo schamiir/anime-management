@@ -1,6 +1,8 @@
-const searchAnime = document.getElementById('searchA')
+const searchAnime = document.getElementById('searchAnime')
+const deleteAnime = document.getElementById('delete')
 
-searchAnime.addEventListener('click', searchAnimeFunc)
+// searchAnime.addEventListener('click', searchAnimeFunc)
+deleteAnime.addEventListener('click', deleteAnimeFunc)
 
 // Array.from(addAnime).forEach(ele => ele.addEventListener('click', getFetch))
 
@@ -63,22 +65,37 @@ async function renderRandomAnime() {
     }
 }
 
-// renderRandomAnime()
+renderRandomAnime()
 
-async function searchAnimeFunc() {
-    const userInput = document.getElementById('userInput').value.toLowerCase()
-    console.log(userInput)
+function deleteAnimeFunc() {
+    const obj = this.parentNode.dataset._id
+    fetch('/',{
+        method: 'delete',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+        title: obj
+        })
 
-    const response = await fetch (`https://kitsu.io/api/edge/anime?filter[text]=${userInput}`)
-
-    const data = await response.json() // changes the data to JSON file
-    const attributePath = data.data[0].attributes // path of api data
-
-    document.getElementById('searchedAnime').src = attributePath.posterImage.medium // Fetching the anime images
-
-
-    document.getElementById('episodes').textContent = `Total episodes: ${attributePath.episodeCount}` // Number of episodes
+    })
+    .then(res => {
+        console.log(res)
+    })
 }
+
+// async function searchAnimeFunc() {
+//     const userInput = document.getElementById('userInput').value.toLowerCase()
+//     console.log(userInput)
+
+//     const response = await fetch (`https://kitsu.io/api/edge/anime?filter[text]=${userInput}`)
+
+//     const data = await response.json() // changes the data to JSON file
+//     const attributePath = data.data[0].attributes // path of api data
+
+//     document.getElementById('searchedAnime').src = attributePath.posterImage.medium // Fetching the anime images
+
+
+//     document.getElementById('episodes').textContent = `Total episodes: ${attributePath.episodeCount}` // Number of episodes
+// }
 
 
 
