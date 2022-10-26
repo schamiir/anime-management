@@ -4,14 +4,15 @@ const app = express() // returns an object -> that has methods of get/post/delet
 // What is the difference between these two?
 // app.get(/* */) -> we need to work on the same "instance" of the object and build on top of it 
 // Instance => session / initialized version of the object. 
-// express().get(/* */)  -> if we call express() everytime we will be creating a new object we dont that !== instance object 
+// express().get(/* */)  -> if we call express() everytime we will be creating a new object we dont want that !== instance object 
 
 const bodyParser = require('body-parser') // middleware > explained on line 43 ~ 45
 
 
 /* new packages*/
-const methodOverride = require('method-override')
-const fetch = require('node-fetch') // lets us use fetch on the server side 
+const methodOverride = require('method-override') // use for the delete 
+const fetch = require('node-fetch') // lets us use fetch on the server side (using version @2)
+// npm install node-fetch@2 => how to install
 
 const PORT = process.env.PORT || 3000 // 3000 for local host but "process.env.PORT" for hosting sites 
 
@@ -58,15 +59,15 @@ client.connect().then(client => {
     }))
 
     app.put('/animeData', (req, res) => { // creates the '/animeData' route and expects it to be a 'PUT' method. 
-        console.log(req.body)
+        console.log(`put ${req.body}`)
     })
 
 
     app.get('/', (req, res) => {
-        animeCollection.find().toArray()
+        animeCollection.find().toArray() // Goes into the COLLECTION and FINDS the documents and turns them into an ARRAY of OBJECTS 
         .then(results => {
-        res.render('index.ejs', {
-            anime: results //render a variable anime that contains everything in the collection (which is called results)
+        res.render('index.ejs', { // renders the "array of objects" on ejs so we can use it 
+            anime: results //to use the results -> we assign the "array of objects" into the variable of "anime" that contains the stuff inside: id, title, img....
         })
     })
     .catch(/* */)
